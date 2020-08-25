@@ -2,35 +2,32 @@
 #include<vector>
 #include<utility>
 #include<algorithm>
+#include<map>
 using namespace std;
-bool cmp(pair<int,int>a,pair<int,int>b)
-{
-   if(a.first==b.first)
-   {
-       return a.second>b.second;
-   }return a.first>b.first;
-
-}
 int main()
 {
-    int n,m,i,j,a,b;
+    int n,i,type,mark;
+    string name;
     cin>>n;
-    vector<pair<int,int>>v;
-    for(i=0;i<n;i++)
+ map<string,int>mp;
+    while(n--)
     {
-    cin>>a>>b;
-    v.push_back(make_pair(a,b));
+
+        cin>>type>>name;
+        if(type==1)
+        {
+            cin>>mark;
+
+            mp[name]+=mark;
+        }
+        else if(type==2)
+        {
+            mp.erase(name);
+        }
+        else
+        {
+            cout<<mp[name]<<endl;
+        }
     }
-    cout<<"Before sorting"<<endl;
-    for(i=0;i<n;i++)
-    {
-        cout<<v[i].first<<" "<<v[i].second<<endl;
-    }
- cout<<"After sorting"<<endl;
- sort(v.begin(),v.end(),cmp);
- for(i=0;i<n;i++)
- {
-     cout<<v[i].first<<" "<<v[i].second<<endl;
- }
-return 0;
+    return 0;
 }
